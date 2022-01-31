@@ -1,0 +1,13 @@
+{% extends 'core/base_login.html' %} {% load static %} {% block title %}Evaluación completada{% endblock %} {% block content %}
+<main role="main">
+    <div class="container" style=" height: 380px;">
+        <div class="row py-2">
+            <div class="general-div bg-faded col-md-6 mx-auto mb-5 card container-fluid py-2">
+                <h3 class="mb-4 ">La evaluación se ha completado con exitó </h3>
+                <p>Para consultar los resultados obtenidos, ir a detalles.</p>
+                <p class="text-center "> <a href="{% url 'catalog:evaluacion_list' %} ">Ver resultado</a></p>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

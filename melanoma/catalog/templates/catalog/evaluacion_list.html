@@ -1,0 +1,53 @@
+{% extends 'core/base_login.html' %} {% load static %} {% block title %}Listado{% endblock %} {% block content %}
+
+<div class="panel panel-primary">
+    <div class="panel-heading1 col-xl-12 col-lg-12 mx-auto">
+        {% if not request.user.is_superuser %}
+        <a href="{% url 'catalog:evaluacion_new' %}" class="text-center btn btn-primary mr-3 btn-sm"><span class="fa fa-plus-circle"></span> Nueva</a> {%endif%}
+        <a href="{% url 'home' %} " class="text-center btn btn-primary btn-sm">Regresar</a>
+    </div>
+    <br/>
+    <div class="col-xl-10 col-lg-12 mx-auto">
+        <table class="table table-striped table table-bordered" id="table_id">
+            <thead class=" thead-dark ">
+                <tr>
+                    <th>Código</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Evaluación</th>
+                    {% if not request.user.is_superuser %}
+                    <th>Reporte</th>
+                    <th>Detalle</th>
+                    {% else %}
+                    <th>Opciones</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in obj %}
+                <tr>
+                    <td class="mb-5 small">{{ item.paciente.codigo}}</td>
+                    <td class="mb-5 small">{{ item.paciente.nombre}}</td>
+                    <td class="mb-5 small">{{ item.paciente.apellido }}</td>
+                    <td class="mb-5 small">{{ item.evaluacion_foto }}</td>
+                    {% if not request.user.is_superuser %}
+                    <td class="mb-5 small">
+                        <a href="{% url 'catalog:reportepaciente' item.id %}" target="_blank">Reporte</a>
+                    </td>
+                    <td class="mb-5 small">
+                        <a href="{% url 'catalog:evaluacion_detalle' item.id %}">Ver detalle</a>
+                    </td>
+                    {% else %}
+                    <td class="mb-5 small">
+                        <a href="{% url 'catalog:evaluacion_edit' item.id %} " class="btn btn-primary btn-circle btn-sm small "> <span>Editar</span></a>
+                        <a href="{% url 'catalog:evaluacion_delete' item.id %} " class="btn btn-info btn-circle btn-sm small "> <span>Eliminar</span></a>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr />
+    </div>
+</div>
+{% endblock %}

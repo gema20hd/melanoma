@@ -1,0 +1,52 @@
+{% extends 'core/base_login.html' %} {% load static %} {% block title %}Detalle{% endblock %} {% block content %}
+<div class="col-xl-8 col-lg-12 mx-auto ">
+    <div class="row ">
+        <div class="general-div2 bg-faded card container-fluid col-md-8 ">
+            <div class="profile-header ">
+                <form action=" " method="post " enctype="multipart/form-data ">
+                    {% csrf_token %}
+                    <div class="profile_info row py-1 ">
+                        <div class="col-md-5">
+                            <br>
+                            <a class="a"><strong>Código Imagen</strong>: {{evaluacion.codigo}}</a>
+                            <br>
+                            <img src="{{evaluacion.imagen.url}} " width="200 " height="200 " alt=" " class="rounded-square-border-shadow-picture-in-profile-page"> </a>
+
+                        </div>
+                        <div class="col-md-6 text-left mt-4 ">
+                            <ul class="py-1 text-left no-bullet ">
+                                <br>
+                                <br>
+                                <a class="text-secondary"><strong >Código</strong>: {{evaluacion.paciente.codigo}}</a>
+                                <br>
+                                <a class="text-secondary"><strong >Cédula</strong>: {{evaluacion.paciente.cedula}}</a>
+                                <br>
+                                <a class="text-secondary"><strong >Nombre</strong>: {{evaluacion.paciente.nombre}}</a>
+                                <br>
+                                <a class="text-secondary"><strong >Apellido</strong>: {{evaluacion.paciente.apellido}}</a>
+                                <br>
+                                <a class="text-secondary"><strong >Edad</strong>: {{evaluacion.paciente.edad}}</a>
+                                <br>
+                                <a class="text-secondary"><strong >Genero</strong>: {{evaluacion.paciente.genero}}</a>
+                                <br>
+                                <a class="text-secondary"><strong>Fecha </strong>: {{evaluacion.fecha}}</a>
+                                <br>
+                                <a class="text-secondary"><strong>Evaluación</strong>: {{evaluacion.evaluacion_foto}}</a>
+                                <br>
+                                <a class="text-secondary"><strong>Creado</strong>: {{evaluacion.creado|date:'d/m/Y H:i' }}</a>
+                                <br>
+                                <br>
+                                <hr />
+                                <a href="{% url 'catalog:evaluacion_list' %} " class="text-center ">Regresar</a>
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br/> {% endblock %}

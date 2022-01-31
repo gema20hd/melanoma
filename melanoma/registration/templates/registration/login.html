@@ -1,0 +1,43 @@
+{% extends 'core/base_login.html' %} {% load static %} {% block title %}Iniciar sesión{% endblock %} {% block content %}
+<style>
+    .errorlist {
+        color: red;
+    }
+</style>
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-8 mx-auto mb-5  card container-fluid">
+
+            {% if 'register' in request.GET %}
+            <p style="color:green;">Usuario registrado correctamente, ya puedes identificarte.</p>
+            {% endif %}
+            <form action="" class="login-form" method="post">
+                {% csrf_token %}
+                <p class="login-img"><i class="icon_lock_alt"></i></p>
+                <h3 class="mb-4 text-center">Iniciar sesión</h3>
+                {% if form.non_field_errors %}
+                <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
+                {% endif %}
+                <div class="login-wrap">
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="icon_profile"></i></span>
+                        <input type="text" name="username" autofocus maxlength="254" required id="id_username" class="form-control" placeholder="Nombre de usuario" />
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                        <input type="password" name="password" required id="id_password" class="form-control" placeholder="Contraseña" />
+                    </div>
+
+                    <p><input type="submit" class="btn btn-primary btn-block" value="Acceder"></p>
+                </div>
+            </form>
+            <p class="p1">
+                ¿Ha olvidado su clave? Puede restaurarla <a href="{% url 'password_reset' %}">aquí</a>.
+            </p>
+        </div>
+    </div>
+</div>
+</main>
+{% endblock %}

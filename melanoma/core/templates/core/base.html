@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <title>
+        {% block title %}{% endblock %} | SISTEMA DE DETECCIÓN DEL CÁNCER DE PIEL</title>
+    {% load static %}
+
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'core/img/icono.jpg' %}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{%static  'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{%static  'core/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{%static  'core/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{%static  'core/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{%static  'core/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{%static  'core/vendor/venobox/venobox.css' %}" rel="stylesheet">
+    <link href="{%static  'core/vendor/aos/aos.css' %}" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link href="{% static 'core/css/estilos.css' %}" rel="stylesheet">
+</head>
+
+
+
+<body>
+    <!-- ======= Top Bar ======= -->
+    <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <a class="text-dark"> BIENVENIDO/A:</a> &nbsp; &nbsp;
+                <a> {{user.first_name}} {{user.last_name}}</a>
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="text-primary"></i>SISTEMA DE DETECCIÓN DE CÁNCER DE PIEL CON REDES NEURONALES CONVOLUCIONALES
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+            <a class="logo mr-auto "><img src="{% static 'core/img/logo.png' %} " alt=" "></a>
+            <nav class="nav-menu d-none d-lg-block ">
+                <ul>
+                    {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
+                    <li class="dropdown"><a href="{% url 'home' %} ">Inicio</a></li>
+                    <li><a href="{% url 'profile' %} ">Perfil</a></li>
+                    <li class="dropdown"><a href="{% url 'catalog:genero_list' %} ">Genero</a></li>
+                    <li class="dropdown"><a href="{% url 'catalog:especialidad_list' %} ">Especialidad</a></li>
+                    <li class="dropdown"><a href="{% url 'catalog:medico_list' %} ">Medico</a></li>
+                    <li><a href="{% url 'catalog:paciente_list' %} ">Paciente</a></li>
+                    <li><a href="{% url 'catalog:evaluacion_list' %} ">Evaluación</a></li>
+                    <li><a href="/admin/ ">Gestión Usuarios</a></li>
+                    {% else %}
+                    <li class="dropdown"><a href="{% url 'home' %} ">Inicio</a></li>
+                    <li><a href="{% url 'profile' %} ">Perfil</a></li>
+                    <li><a href="{% url 'catalog:paciente_list' %} ">Paciente</a></li>
+                    <li><a href="{% url 'catalog:evaluacion_list' %} ">Evaluación</a></li>
+                    <li><a href="{% url 'contact' %} ">Contacto</a></li>
+
+                    {% endif %}
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="username">{{user.username}}</span>
+                            <span class="profile-ava">
+                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+                                    <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                    <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                             </svg>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <div class="log-arrow-up"></div>
+                            <a href="{% url 'login' %}"><i></i>Salir</a>
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                    {% endif %}
+                </ul>
+
+            </nav>
+        </div>
+    </header>
+    {% block content %} {% endblock %}
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-newsletter">
+        </div>
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="general-div3 col-lg-3 col-md-6 footer-contact">
+                        <h3>UCE</h3>
+                        <p>
+                            Av. Universitaria <br> Quito, 170129<br> Ecuador <br><br>
+                            <strong>Telefono: </strong> (02) 252-8810<br>
+                            <strong>Página web: </strong>https://www.uce.edu.ec<br>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Enlaces</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %} ">Inicio</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %} ">Perfil</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'contact' %} ">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Redes sociales</h4>
+                        <p>Visita nuestras redes sociales para mayor información del sistema de evaluación y la satisfacción de los clientes </p>
+                        <div class="social-links mt-3">
+                            <a href="https://twitter.com/" class="twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="https://www.facebook.com/lacentralec" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="https://www.instagram.com/uceuniversidad" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            <a href="https://www.uce.edu.ec/" class="google-plus"><i class="bx bxl-skype"></i></a>
+                            <a href="https://www.linkedin.com/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container1 footer-bottom clearfix">
+            <div class="copyright">
+                </br>
+                &copy; <strong>Copyright </strong> <strong><span class="text-primary">2020 Universidad Central del Ecuador. Todos los derechos reservados.</span></strong>
+            </div>
+            <div class="credits">
+                <a> <strong>Quito-Ecuador </strong></a>
+                </br>
+                <strong><a class="text-primary"> Designed by Gema Zumba</a></strong>
+                </br>
+                </br>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{%static  'core/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{%static  'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{%static  'core/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+    <script src="{%static  'core/vendor/php-email-form/validate.js' %}"></script>
+    <script src="{%static  'core/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+    <script src="{%static  'core/vendor/counterup/counterup.min.js' %}"></script>
+    <script src="{%static  'core/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+    <script src="{%static  'core/vendor/venobox/venobox.min.js ' %}"></script>
+    <script src="{%static  'core/vendor/aos/aos.js ' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{%static  'core/js/main.js' %}"></script>
+</body>
+
+</html>

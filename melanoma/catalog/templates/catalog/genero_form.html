@@ -1,0 +1,22 @@
+{% extends 'core/base_login.html' %} {% load static %} {% block title %}Crear/Editar{% endblock %} {% block content %}
+<main role="main">
+    <section class="page-section about-heading">
+        <div class="container">
+            <div class="general-div bg-faded col-md-10 about-heading-conten">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <div class="rounded">
+                            <form action="" method="post">{% csrf_token %}
+                                <h3 class=" text-center text-primary mt-3">Crear/Editar</h3>
+                                {{form.as_p}}
+                                <p><input type="submit" class="btn btn-primary btn-primary btn-block " value="Confirmar"></p>
+                                <a href="{% url 'catalog:genero_list' %}" class="btn btn-primary btn-block">Cancelar</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

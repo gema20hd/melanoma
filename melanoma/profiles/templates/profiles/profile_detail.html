@@ -1,0 +1,49 @@
+{% extends 'core/base_supervisor.html' %} {% load static %} {% block title %}Empleados {% endblock %} {% block content %}
+<section class="content profile-page my-3 col-xl-8 col-lg-10 mx-auto">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card container-fluid p-0 m-t-20">
+                <div class="profile-header">
+                    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                        <div class="row ">
+                            <!-- Previa del avatar -->
+                            <div class="col-md-2">
+                                {% if request.user.profile.avatar %}
+                                <img src="{{profile.avatar.url}}" class="img-fluid">
+                                <p class="mt-1">¿Borrar? <input type="checkbox" id="avatar-clear" name="avatar-clear" /></p>
+                                {% else %}
+                                <img src="{% static 'registration/img/no-avatar.jpg' %}" class="img-fluid"> {% endif %}
+                            </div>
+                            <!-- Formulario -->
+                            <div class="col-md-8 col-12">
+
+                                <strong class="orange mb-3">{{request.user.first_name}} {{request.user.last_name}}</strong>
+                                <ul class="text-left no-bullet">
+                                    <br>
+                                    <a><strong>Usuario </strong>: {{user.username}}</a>
+                                    <br>
+                                    <a><strong>Nombre</strong>: {{user.first_name}}</a>
+                                    <br>
+                                    <a><strong> Apellido</strong>: {{user.last_name}}</a>
+                                    <br>
+                                    <a><strong>Email</strong>: {{user.email}}</a>
+                                    <br>
+                                    <a><strong>FechaLogin</strong>: {{user.last_login}}</a>
+                                    <br>
+
+                                    <a><strong>Creado</strong>: {{user.created|date:'d/m/Y H:i' }}</a>
+                                    <br>
+                                    <a><strong>Modificado</strong>: {{user.updated|date:'d/m/Y H:i' }}</a>
+                                    <br>
+                                    <hr />
+                                    <a href="{% url 'profiles:list' %}" class="text-center ">Regresar</a>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

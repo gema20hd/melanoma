@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %} {% load static %} {% block title %}Inicio{% endblock %} {% block content %}
+
+<!-- Cabecera -->
+<section class="page-section clearfix">
+    <div class="container">
+        <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'core/img/fondo1.jpg' %}" alt="">
+            <div class="intro-text left-0 text-center bg-faded p-0 m-t-20 p-5 rounded">
+                <h2 class="section-heading mb-4">
+                    <br>
+                    <br>
+                    <span class="section-heading-upper text-dack display-4">Bienvenido al</span>
+                    <span class="section-heading-upper text-primary display-4">SISTEMA DE DETECCIÓN DE CÁNCER DE PIEL CON REDES NEURONALES CONVOLUCIONALES</span>
+                </h2>
+                <p class="mb-3">.
+                </p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mensaje -->
+<div class="cta-inner">
+    <div class="col-xl-12">
+        <section class="page-section cta">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 mx-auto ">
+                        <div class="cta-inner bg-faded text-center rounded">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper text-dark">Compromiso total</span>
+                                <span class="section-heading-lower text-dark">Garantizado</span>
+                            </h2>
+                            <p class="mb-0 text-dark">
+                                La prevención a tiempo del melanoma maligno es importante, pensado en la salud del ser humanos hemos desarrollado un sistema inteligente, que cuenta con una precisión más del 93%, para ellos usamos algoritmos de deep learning y modelo fue entrando en
+                                una red neuronal convolucional, además hemos usado 2 métricas para validar la eficiencia del modelo. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

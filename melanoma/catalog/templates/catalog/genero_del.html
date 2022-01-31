@@ -1,0 +1,35 @@
+{% extends 'core/base_login.html' %} {% load static %} {% block title %}Eliminar{% endblock %} {% block content %}
+<main role="main">
+    <section class="page-section about-heading">
+        <div class="container">
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-10 mx-auto">
+                        <div class="general-div bg-faded col-md-7 mx-auto mb-3 bg-faded rounded p-4 form-group">
+                            <br>
+                            <form method="POST" ">
+                                <br>
+                                <div class="panel panel-default ">
+                                    <!-- /.panel-heading -->
+                                    <div class="col-xl-12 col-lg-12 mx-auto ">
+                                        {% csrf_token %}
+                                        <div class="alert alert-success ">
+                                            ¿ Está seguro que desea eliminar: {{obj.genero}} ?
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 mx-auto ">
+                                    <button class="btn btn-primary btn-primary btn-block " type="submit "><span class="fa fa-save "></span>Eliminar</button>
+                                    <a href="{% url 'catalog:genero_list' %} " class=" btn btn-primary btn-primary btn-block btn btn-success "><span class="fa fa-undo "></span>Cancelar</a>
+                                </div>
+                                <br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

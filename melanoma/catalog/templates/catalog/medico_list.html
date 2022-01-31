@@ -1,0 +1,45 @@
+{% extends 'core/base_login.html' %} {% load static %} {% block title %}Listado{% endblock %} {% block content %}
+
+<div class="panel panel-primary">
+    <div class="panel-heading1 col-xl-12 col-lg-12 mx-auto">
+        <a href="{% url 'catalog:medico_new' %}" class="btn btn-primary mr-3 btn-sm small"><span class="fa fa-plus-circle"></span>
+            Nuevo</a>
+        <a href="{% url 'home' %} " class="text-center btn btn-primary  btn-sm small">Regresar</a>
+    </div>
+    <br/>
+    <div class="col-xl-8 col-lg-12 mx-auto">
+        <table class="table table-striped table table-bordered" id="table_id">
+            <thead class=" thead-dark ">
+                <tr>
+                    <th>Cédula</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Email</th>
+                    <th>Genero</th>
+                    <th>Especialidad</th>
+                    <th>Modificado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in obj %}
+                <tr>
+
+                    <td class="mb-5 small">{{ item.cedula}}</td>
+                    <td class="mb-5 small">{{ item.nombre}}</td>
+                    <td class="mb-5 small">{{ item.apellido}}</td>
+                    <td class="mb-5 small">{{ item.email}}</td>
+                    <td class="mb-5 small">{{ item.genero.genero}}</td>
+                    <td class="mb-5 small">{{ item.especialidad.especialidad}}</td>
+                    <td class="mb-5 small">{{ item.modificado|date:'d/m/Y H:i' }}</td>
+                    <td class="mb-5 small">
+                        <a href="{% url 'catalog:medico_edit' item.id %}" class="btn btn-primary btn-circle btn-sm small"> <span>Editar</span></a>
+                        <a href="{% url 'catalog:medico_delete' item.id %} " class="btn btn-info btn-circle btn-sm small "> <span>Eliminar</span></a>
+                    </td>
+                </tr> {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'core/base_login.html' %} {% load static %} {% block title %}Evaluación de la Fotografía {% endblock %} {% block content %}
+    <section class="about-heading dropdown">
+        <div class="container ">
+            <div class="general-div bg-faded about-heading-content col-md-3 ">
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="rounded ">
+                    <form method="POST" method="FILES" enctype="multipart/form-data" id="image-form">
+                        {% csrf_token %}
+                        <br>
+                        <div classNameName=" col-xl-11 col-lg-11 mx-auto">
+                            <label classNameName="control-label" for="inputSuccess">Subir Imagen</label> {{ form.imagen}}
+                        </div>
+                        <div classNameName="col-xl-11 col-lg-11 mx-auto ">
+                            <label classNameName="control-label" for="inputSuccess">Paciente</label> {{ form.paciente}}
+                        </div>
+                        <div classNameName="col-xl-11 col-lg-11 mx-auto " style="text-align: center;">
+                            <label classNameName="input" classNameName="control-label" for="inputWarning">Imagen de evaluación</label>
+                            <br>
+                            <img  id="preview" class="img-thumbnail">
+                        </div>
+                         <br>
+                        <div classNameName="col-xl-11 col-lg-11 mx-auto " style="text-align: center;">
+                            <button classNameName="btn btn-primary btn-secondary btn-block" type="submit " onclick="hizoClick()">
+                                        <span classNameName="fa fa-save "></span> Guardar
+                                    </button>
+                            <a href="{% url 'catalog:evaluacion_list' %} " classNameName=" btn btn-primary btn-primary btn-block btn btn-success ">
+                                <span classNameName="fa fa-undo "></span>Cancelar
+                            </a>
+                        </div>
+                  
+                          <br>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+     <br>
+        <br>
+        <br>
+</main>
+
+{% endblock %}

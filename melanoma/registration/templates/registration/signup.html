@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %} {% load static %} {% block title %}Registro{% endblock %} {% block content %}
+<style>
+    .errorlist {
+        color: red;
+    }
+    
+    label {
+        display: none
+    }
+</style>
+<main role="main">
+    <div class="container">
+        <div class="row">
+            <div class=" general-div bg-faded col-md-6 mx-auto mb-5 card container-fluid mt-3">
+                <form action="" method="post">{% csrf_token %}
+                    <h3 class="mb-4 text-center text-primary tex text-block mt-3">Registro</h3>
+                    {{form.as_p}}
+                    <p><input type="submit" class="btn btn-primary btn-primary btn-block " value="Confirmar"></p>
+                    <a href="{% url 'profiles:list' %}" class="btn btn-primary btn-block">Cancelar</a>
+                </form>
+
+                <br>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
