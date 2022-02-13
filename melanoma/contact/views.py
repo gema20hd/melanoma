@@ -18,10 +18,16 @@ def contact(request):
             name = request.POST.get('name', '')
             email = request.POST.get('email', '')
             content = request.POST.get('content', '')
-            # Enviamor
+        
+            # Enviamos
             email = EmailMessage(
                 subject,
-                "\n{}".format(content),  to=[email])
+                "De {} <{}>\n\nEscribió:\n\n{}".format(name, email,content), 
+                "no-contestar@inbox.mailtrap.io",
+                ["melanomasdcp@gmail.com"],
+                reply_to=[email]
+                 
+                 )
             try:
                 email.send()
                 return redirect(reverse(contact)+"?OK")
